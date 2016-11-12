@@ -1,5 +1,6 @@
 package kku.friend.easykku;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,7 +58,31 @@ public class SignUpActivity extends AppCompatActivity {
             } //onClick
         });
 
+        // Imnge Controller
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                intent.setType("image/*");
+                startActivityForResult(Intent.createChooser(intent, "โปรดเลือกแอพดูภาพ"), 0);
+
+
+            } // onClick
+        });
 
     } // Main Method
 
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode,
+                                    Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ((requestCode == 0) && (requestCode == RESULT_OK)) {
+
+            Log.d("12novV1", "Result OK");
+
+        } // if
+
+    } // onActivity
 } // Main Class
